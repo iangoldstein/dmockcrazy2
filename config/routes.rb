@@ -1,4 +1,11 @@
 Dmockcrazy2::Application.routes.draw do
+  resources :candidates
+
+  match  'vote' => 'vote#index'
+  post 'vote/submit'
+  match 'results' => 'results#index'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +55,7 @@ Dmockcrazy2::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
 

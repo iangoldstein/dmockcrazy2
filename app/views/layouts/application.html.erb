@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dmockcrazy2</title>
+  <title>Dmockcrazy</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="wrapper">
 
-<%= yield %>
+  <div id="header">
+    <a href="<%= root_url %>"><img src="<%= root_url %>assets/logo.png"></a>
+  </div><!-- #header-->
 
+  <div id="nav">
+    <div id="nav-ribbon-left"></div>
+    <div id="nav-ribbon-right"></div>
+
+    <ul>
+      <li>
+        <% #link_to 'Admin', elections_path %>
+      </li>
+      <li>
+        <%= link_to 'Vote!', vote_path %>
+      </li>
+      <li>
+        <%= link_to 'Results', results_path %>
+        <% #link_to 'Candidates', candidate_path  %>
+      </li>
+      <li>
+        <%= link_to 'Candidates', candidates_path %>
+      </li>
+      <li>
+        <% #link_to 'Log Out', elections_path %>
+        <% #link_to 'Candidates', election_ballot_line_candidate_path %>
+      </li>
+    </ul>
+  </div><!-- #nav-->
+
+
+
+  <div id="content">
+    <p class="notice" id="notice"><%=  notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </div><!-- #content-->
+
+</div><!-- #wrapper -->
+
+<div id="footer">
+</div><!-- #footer -->
 </body>
 </html>

@@ -1,0 +1,37 @@
+<h1>
+  <%if @winner%>
+      <%=  @winner.name %> is in the lead!
+  <%else%>
+      No one is leading yet!
+  <%end%>
+</h1>
+
+<div id="table-with-graph">
+  <%= render 'chart' %>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Votes</th>
+        <th>% Vote</th>
+      </tr>
+      <tfoot>
+      <tr>
+        <td>Total</td>
+        <td><%= @total_vote %></td>
+        <td>100.00%</td>
+      </tr>
+      </tfoot>
+
+      <% @candidates.each do |candidate| %>
+          <tr>
+            <td><%= candidate.name %></td>
+            <td><%= candidate.votes.count %></td>
+            <td><%= number_to_percentage(candidate.votes.count * 100 / (@total_vote * 1.0),:precision => 2) %></td>
+          </tr>
+      <% end %>
+    </table>
+
+</div>
+
+
