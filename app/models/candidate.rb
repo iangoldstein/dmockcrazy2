@@ -3,5 +3,14 @@ class Candidate < ActiveRecord::Base
 
   validates :name,  :presence => true
 
-  has_many :votes
+  has_many :votes,
+           :dependent => :destroy
+
+  # Clear votes records before destroy
+  before_destroy :clear_votes
+
+  protected                            l
+  def clear_votes
+    votes.clear
+  end
 end
