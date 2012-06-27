@@ -1,4 +1,8 @@
 Dmockcrazy2::Application.routes.draw do
+  devise_for :admins
+
+  devise_for :users
+
   resources :candidates
 
   match  'vote' => 'vote#index'

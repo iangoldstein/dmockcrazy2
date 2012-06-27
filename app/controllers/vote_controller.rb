@@ -1,4 +1,7 @@
 class VoteController < ApplicationController
+
+  before_filter :authenticate_user! #users only
+
   # GET /vote
   # GET /vote.json
   def index
@@ -16,6 +19,7 @@ class VoteController < ApplicationController
 
     @candidate = Candidate.find(params[:id])
     @vote = @candidate.votes.create
+    current_user.vote = @vote
 
     respond_to do |format|
       format.html { redirect_to results_path, notice: 'Your vote was recorded!' }

@@ -1,3 +1,5 @@
+
+
 <h1>
   <%if @winner%>
       <%=  @winner.name %> is in the lead!
@@ -5,6 +7,10 @@
       No one is leading yet!
   <%end%>
 </h1>
+
+<% if current_user and current_user.vote %>
+    <h3>You voted for <%= current_user.vote.candidate.name %></h3>
+<% end %>
 
 <div id="table-with-graph">
   <%= render 'chart' %>

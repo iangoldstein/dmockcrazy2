@@ -1,3 +1,12 @@
 <h1>Vote!</h1>
 
-<%= render 'form' %>
+<% if current_user.vote %>
+    <h3>You've already voted for <%= current_user.vote.candidate.name %></h3>
+    <h5>(You can always register a user account and vote again!)</h5>
+<% else %>
+    <% if @candidates.count > 0 %>
+        <%= render 'form' %>
+    <% else %>
+        <h3>No Candidates Defined</h3>
+    <% end %>
+<% end %>

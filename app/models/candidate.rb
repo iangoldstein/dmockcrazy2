@@ -9,7 +9,7 @@ class Candidate < ActiveRecord::Base
   # Clear votes records before destroy
   before_destroy :clear_votes
 
-  protected                            l
+  protected
   def clear_votes
     votes.clear
   end

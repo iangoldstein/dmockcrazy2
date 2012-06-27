@@ -1,4 +1,7 @@
 class CandidatesController < ApplicationController
+
+  before_filter :authenticate_admin! #admins only
+
   # GET /candidates
   # GET /candidates.json
   def index

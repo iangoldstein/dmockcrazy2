@@ -26,15 +26,20 @@
       </li>
       <li>
         <%= link_to 'Results', results_path %>
-        <% #link_to 'Candidates', candidate_path  %>
       </li>
       <li>
-        <%= link_to 'Candidates', candidates_path %>
+        <%= link_to "Admin", candidates_path %>
       </li>
       <li>
-        <% #link_to 'Log Out', elections_path %>
-        <% #link_to 'Candidates', election_ballot_line_candidate_path %>
+        <% if user_signed_in? %>
+            <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+        <% end %>
       </li>
+      <% if admin_signed_in? %>
+      <li>
+            <%= link_to "Sign Out As Admin", destroy_admin_session_path, :method => :delete %>
+      </li>
+      <% end %>
     </ul>
   </div><!-- #nav-->
 
